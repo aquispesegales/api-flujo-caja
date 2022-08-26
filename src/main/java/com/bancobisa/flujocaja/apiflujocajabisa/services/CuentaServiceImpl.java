@@ -33,8 +33,8 @@ public class CuentaServiceImpl implements ICuentaService {
 
             Optional<DatosClienteEntity> datosClienteEntity =  iDatosClienteDao.buscarClientePorClienteId(cuentaDto.getClienteId());
             if (!datosClienteEntity.isPresent()){
-                resp.setCodigo("COD_1001");
-                resp.setMensaje("No existe el cliente = "+cuentaDto.getClienteId());
+                resp.setCodigo(ConstDiccionarioMensajes.COD1003);
+                resp.setMensaje(ConstDiccionarioMensajes.COD1003_MENSAJE +" para = "+cuentaDto.getClienteId());
                 return resp;
             }
 
@@ -53,8 +53,8 @@ public class CuentaServiceImpl implements ICuentaService {
             resp.setMensaje(ConstDiccionarioMensajes.COD1000_MENSAJE);
 
         }catch (Exception ex){
-            resp.setCodigo("COD_1001");
-            resp.setMensaje("Error Técnico");
+            resp.setCodigo(ConstDiccionarioMensajes.COD1001);
+            resp.setMensaje(ConstDiccionarioMensajes.COD1001_MENSAJE);
         }
         return resp;
     }
@@ -77,8 +77,8 @@ public class CuentaServiceImpl implements ICuentaService {
             resp.setElementoGenerico(saldo);
 
         }catch (Exception ex){
-            resp.setCodigo("COD_1001");
-            resp.setMensaje("Error Técnico");
+            resp.setCodigo(ConstDiccionarioMensajes.COD1001);
+            resp.setMensaje(ConstDiccionarioMensajes.COD1001_MENSAJE);
         }
         return resp;
     }
@@ -100,8 +100,8 @@ public class CuentaServiceImpl implements ICuentaService {
             resp.setElementoGenerico(lstCuentaDto);
 
         }catch (Exception ex){
-            resp.setCodigo("COD_1001");
-            resp.setMensaje("Error Técnico");
+            resp.setCodigo(ConstDiccionarioMensajes.COD1001);
+            resp.setMensaje(ConstDiccionarioMensajes.COD1001_MENSAJE);
         }
         return resp;
     }

@@ -43,8 +43,8 @@ public class DatosClienteServiceImpl implements IDatosClienteService {
             resp.setMensaje(ConstDiccionarioMensajes.COD1000_MENSAJE);
 
         }catch (Exception ex){
-            resp.setCodigo("COD_1001");
-            resp.setMensaje("Error Técnico");
+            resp.setCodigo(ConstDiccionarioMensajes.COD1001);
+            resp.setMensaje(ConstDiccionarioMensajes.COD1001_MENSAJE);
 
             //.... SE DEBE REGISTRAR LOG EN LA TABLA DE LOG, POR TEMAS DE TIEMPO NO PUDE COMPLETAR
         }
@@ -59,8 +59,8 @@ public class DatosClienteServiceImpl implements IDatosClienteService {
 
             List<DatosClienteDto> lstClientes =  iDatosClienteDao.buscarTodosLosClientes();
             if(lstClientes.size()==0){
-                resp.setCodigo("COD_1001");
-                resp.setMensaje("No existe Clientes");
+                resp.setCodigo(ConstDiccionarioMensajes.COD1003);
+                resp.setMensaje(ConstDiccionarioMensajes.COD1003_MENSAJE);
                 return resp;
             }
             resp.setCodigo(ConstDiccionarioMensajes.COD1000);
@@ -68,8 +68,8 @@ public class DatosClienteServiceImpl implements IDatosClienteService {
             resp.setElementoGenerico(lstClientes);
 
         }catch (Exception ex){
-            resp.setCodigo("COD_1001");
-            resp.setMensaje("Error Técnico");
+            resp.setCodigo(ConstDiccionarioMensajes.COD1001);
+            resp.setMensaje(ConstDiccionarioMensajes.COD1001_MENSAJE);
 
             //.... SE DEBE REGISTRAR LOG EN LA TABLA DE LOG, POR TEMAS DE TIEMPO NO PUDE COMPLETAR
         }

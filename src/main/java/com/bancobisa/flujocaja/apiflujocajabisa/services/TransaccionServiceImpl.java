@@ -34,8 +34,8 @@ public class TransaccionServiceImpl implements ITransaccionService {
 
             Optional<CuentaEntity> cuenta =  iCuentaDao.buscarCuentaPorCuentaId(transaccionDto.getCuentaId());
             if(!cuenta.isPresent()){
-                resp.setCodigo("COD_1001");
-                resp.setMensaje("no existe la cuentaId = "+transaccionDto.getCuentaId());
+                resp.setCodigo(ConstDiccionarioMensajes.COD1002);
+                resp.setMensaje(ConstDiccionarioMensajes.COD1002_MENSAJE+ " para = "+transaccionDto.getCuentaId());
                 return resp;
             }
             TransaccionEntity objInsert = new TransaccionEntity();
@@ -52,8 +52,8 @@ public class TransaccionServiceImpl implements ITransaccionService {
             resp.setMensaje(ConstDiccionarioMensajes.COD1000_MENSAJE);
 
         }catch (Exception ex){
-            resp.setCodigo("COD_1001");
-            resp.setMensaje("Error Técnico");
+            resp.setCodigo(ConstDiccionarioMensajes.COD1001);
+            resp.setMensaje(ConstDiccionarioMensajes.COD1001_MENSAJE);
         }
         return resp;
     }
@@ -64,18 +64,18 @@ public class TransaccionServiceImpl implements ITransaccionService {
         try{
             List<HistoricoTransaccionDto> historicoTransaccionDto =  iTransaccionDao.buscarTransaccionPorNroCuenta(pCuenta);
             if(historicoTransaccionDto.size()==0){
-                resp.setCodigo("COD_1001");
-                resp.setMensaje("No se enocntraron transacciones para la cuenta = "+pCuenta);
+                resp.setCodigo(ConstDiccionarioMensajes.COD1004);
+                resp.setMensaje(ConstDiccionarioMensajes.COD1004_MENSAJE + " para la cuenta = "+pCuenta);
                 return resp;
             }
-            resp.setCodigo("COD_1000");
-            resp.setMensaje("historicos encotrados");
+            resp.setCodigo(ConstDiccionarioMensajes.COD1000);
+            resp.setMensaje(ConstDiccionarioMensajes.COD1000_MENSAJE);
             resp.setElementoGenerico(historicoTransaccionDto);
 
 
         }catch (Exception ex){
-            resp.setCodigo("COD_1001");
-            resp.setMensaje("Error Técnico");
+            resp.setCodigo(ConstDiccionarioMensajes.COD1001);
+            resp.setMensaje(ConstDiccionarioMensajes.COD1001_MENSAJE);
         }
         return resp;
     }
