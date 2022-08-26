@@ -37,12 +37,15 @@ public class TransaccionEntity  implements Serializable {
     @Getter @Setter
     private Double saldo;
 
+    @Getter @Setter  @Column(name = "tipo_transaccion_id")
+    private Long tipoTransaccionId;
+
     @Getter @Setter    @Column(name = "fecha_registro")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaRegistro;
 
     @Getter @Setter  @Column(name = "estado_id")
-    private Integer estadoId;
+    private Long estadoId;
 
 
 

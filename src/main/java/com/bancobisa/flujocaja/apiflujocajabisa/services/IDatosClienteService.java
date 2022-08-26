@@ -6,4 +6,6 @@ import com.bancobisa.flujocaja.apiflujocajabisa.dto.ResponseDto;
 
 public interface IDatosClienteService {
     public ResponseDto crearDatosCliente (DatosClienteDto datosClienteDto);
+    public ResponseDto obtenerTodosCliente ();
+
 }

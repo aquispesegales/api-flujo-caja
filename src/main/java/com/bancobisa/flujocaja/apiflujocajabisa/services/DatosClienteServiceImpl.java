@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
+import java.util.List;
 
 @Service
 public class DatosClienteServiceImpl implements IDatosClienteService {
@@ -40,6 +41,31 @@ public class DatosClienteServiceImpl implements IDatosClienteService {
 
             resp.setCodigo(ConstDiccionarioMensajes.COD1000);
             resp.setMensaje(ConstDiccionarioMensajes.COD1000_MENSAJE);
+
+        }catch (Exception ex){
+            resp.setCodigo("COD_1001");
+            resp.setMensaje("Error Técnico");
+
+            //.... SE DEBE REGISTRAR LOG EN LA TABLA DE LOG, POR TEMAS DE TIEMPO NO PUDE COMPLETAR
+        }
+        return resp;
+    }
+
+
+    @Override
+    public ResponseDto obtenerTodosCliente() {
+        ResponseDto resp = new ResponseDto();
+        try{
+
+            List<DatosClienteDto> lstClientes =  iDatosClienteDao.buscarTodosLosClientes();
+            if(lstClientes.size()==0){
+                resp.setCodigo("COD_1001");
+                resp.setMensaje("No existe Clientes");
+                return resp;
+            }
+            resp.setCodigo(ConstDiccionarioMensajes.COD1000);
+            resp.setMensaje(ConstDiccionarioMensajes.COD1000_MENSAJE);
+            resp.setElementoGenerico(lstClientes);
 
         }catch (Exception ex){
             resp.setCodigo("COD_1001");

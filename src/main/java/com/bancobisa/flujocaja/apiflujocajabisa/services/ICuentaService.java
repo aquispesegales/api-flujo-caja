@@ -5,4 +5,7 @@ import com.bancobisa.flujocaja.apiflujocajabisa.dto.ResponseDto;
 
 public interface ICuentaService {
     public ResponseDto crearCuenta (CuentaDto cuentaDto);
+    public ResponseDto saldoPorNroCuenta (String pNroCuenta);
+
+    public ResponseDto obtenerTodosCuentas();
 }

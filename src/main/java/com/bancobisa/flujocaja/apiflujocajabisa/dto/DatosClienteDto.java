@@ -10,6 +10,20 @@ import java.util.Date;
 
 public class DatosClienteDto {
 
+
+
+    public DatosClienteDto(Long clienteId, String codigoCliente, String nombres, String apPaterno, String apMaterno, String ci, String direccion, Date fechaRegistro, Long estadoId) {
+        this.clienteId = clienteId;
+        this.codigoCliente = codigoCliente;
+        this.nombres = nombres;
+        this.apPaterno = apPaterno;
+        this.apMaterno = apMaterno;
+        this.ci = ci;
+        this.direccion = direccion;
+        this.fechaRegistro = fechaRegistro;
+        this.estadoId = estadoId;
+    }
+
     @Getter @Setter
     private Long clienteId;
 
