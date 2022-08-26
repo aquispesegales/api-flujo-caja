@@ -22,7 +22,7 @@ public class DatosClienteEntity implements Serializable {
     @Getter @Setter @Column(name = "codigo_cliente")
     private String codigoCliente;
 
-
+    @Getter @Setter
     private String nombres;
 
     @Getter @Setter @Column(name = "ap_paterno")
@@ -42,7 +42,7 @@ public class DatosClienteEntity implements Serializable {
     private Date fechaRegistro;
 
     @Getter @Setter    @Column(name = "estado_id")
-    private Integer estadoId;
+    private Long estadoId;
 
 
 }
