@@ -23,4 +23,8 @@ public interface ITransaccionDao extends JpaRepository<TransaccionEntity, Long> 
             " where c.numeroCuenta = :pNroCuenta and t.estadoId=1000 and c.estadoId = 1000 and d.estadoId = 1000" )
 
     public List<HistoricoTransaccionDto> buscarTransaccionPorNroCuenta(@Param("pNroCuenta") String pNroCuenta);
+
+    @Query(value = "select (sum(COALESCE (t.ingreso,0)) - sum(COALESCE (t.egreso, 0) ))  from bd_flujo_caja.cuenta.transacciones t  " +
+            "where t.cuenta_id = :cuentaId and t.estado_id = 1000", nativeQuery = true)
+    public Double obtenerSaldoPorCuentaId (@Param("cuentaId") Long cuentaId);
 }

@@ -48,6 +48,13 @@ public class TransaccionServiceImpl implements ITransaccionService {
             objInsert.setFechaRegistro(new Date());
             objInsert.setEstadoId(1000L);
             iTransaccionDao.save(objInsert);
+
+            // Actualiza saldo
+            Double saldo =  iTransaccionDao.obtenerSaldoPorCuentaId(transaccionDto.getCuentaId());
+            CuentaEntity updateCuenta = iCuentaDao.buscarCuentaPorCuentaId(transaccionDto.getCuentaId()).get();
+            updateCuenta.setSaldo(saldo);
+            iCuentaDao.save(updateCuenta);
+
             resp.setCodigo(ConstDiccionarioMensajes.COD1000);
             resp.setMensaje(ConstDiccionarioMensajes.COD1000_MENSAJE);
 

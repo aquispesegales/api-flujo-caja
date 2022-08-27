@@ -31,6 +31,8 @@ public class CuentaServiceImpl implements ICuentaService {
         ResponseDto resp = new ResponseDto();
         try{
 
+
+
             Optional<DatosClienteEntity> datosClienteEntity =  iDatosClienteDao.buscarClientePorClienteId(cuentaDto.getClienteId());
             if (!datosClienteEntity.isPresent()){
                 resp.setCodigo(ConstDiccionarioMensajes.COD1003);
@@ -44,10 +46,12 @@ public class CuentaServiceImpl implements ICuentaService {
             objInsert.setNombreCuenta(cuentaDto.getNombreCuenta());
             objInsert.setDescripcion(cuentaDto.getDescripcion());
             objInsert.setSaldo(0.00);
-            objInsert.setMoneda(1000L); // siempre Bs
+            objInsert.setMoneda(1000l); // 1005 ES bs, esto esta parametrizado en tabla Dominios, a futuro hay q usarlo como constante y no asi quemado
             objInsert.setFechaRegistro(new Date());
             objInsert.setEstadoId(1000L);
             iCuentaDao.save(objInsert);
+
+
 
             resp.setCodigo(ConstDiccionarioMensajes.COD1000);
             resp.setMensaje(ConstDiccionarioMensajes.COD1000_MENSAJE);
